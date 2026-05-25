@@ -1,9 +1,11 @@
 *~
 \#*\#
 
+.lsp
 .repl-*
 .nrepl-*
 
+.clj-*
 .lein-*
 *.gcode
 *.scad

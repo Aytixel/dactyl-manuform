@@ -22,13 +22,13 @@
 (def centercol 4)                      ; controls left-right tilt / tenting (higher number is more tenting)
 (def tenting-angle (/ π 12))           ; or, change this for more precise tenting control
 
-(def pinky-15u true)                   ; controls whether the outer column uses 1.5u keys
+(def pinky-15u false)                   ; controls whether the outer column uses 1.5u keys
 (def first-15u-row 0)                  ; controls which should be the first row to have 1.5u keys on the outer column
 (def last-15u-row 3)                   ; controls which should be the last row to have 1.5u keys on the outer column
 
 (def extra-row true)                   ; adds an extra bottom row to the outer column(s)
 (def inner-column true)                ; adds an extra inner column (two less rows than nrows)
-(def thumb-style "cf")                 ; toggles between "manuform", "mini", and "cf" thumb cluster
+(def thumb-style "manuform")                 ; toggles between "manuform", "mini", and "cf" thumb cluster
 
 (def column-style :standard)
 
@@ -56,7 +56,7 @@
 
 ; If you use Cherry MX or Gateron switches, this can be turned on.
 ; If you use other switches such as Kailh, you should set this as false
-(def create-side-nubs? false)
+(def create-side-nubs? true)
 
 ;;;;;;;;;;;;;;;;;;;;;;;
 ;; General variables ;;
@@ -956,7 +956,7 @@
   (hull p (bottom 0.001 p)))
 
 (def left-wall-x-offset (if inner-column 4 9))
-(def left-wall-z-offset 1) 
+(def left-wall-z-offset 1)
 
 (defn left-key-position [row direction]
   (map - (key-position 0 row [(* mount-width -0.5) (* direction mount-height 0.5) 0]) [left-wall-x-offset 0 left-wall-z-offset]) )
@@ -1318,7 +1318,7 @@
 (when (and (false? pinky-15u) (false? extra-row))
     (def screw-offset-tr [-4 6.5 0])
     (def screw-offset-br [-6 13 0]))
-    
+
 ; Offsets for the screw inserts dependent on thumb-style & inner-column
 (when (and (= thumb-style "cf") inner-column)
     (def screw-offset-bl [9 4 0])
